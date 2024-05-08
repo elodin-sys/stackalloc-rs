@@ -252,7 +252,7 @@ unsafe fn catch_unwind<R, F: FnOnce() -> R>(f: F) -> Result<R, ()>{
     let data_ptr = &mut data as *mut _ as *mut u8;
 
     
-    if core::intrinsics::r#try(do_call::<F, R>, data_ptr, do_catch::<F, R>) == 0{
+    if core::intrinsics::catch_unwind(do_call::<F, R>, data_ptr, do_catch::<F, R>) == 0{
         Result::Ok(ManuallyDrop::into_inner(data.r))
     }else{
         Result::Err(())
