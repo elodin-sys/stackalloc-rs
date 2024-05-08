@@ -19,3 +19,6 @@ rustc_version = "0.2"
 [features]
 default = []
 no_std = []
+
+# for tests
+no_unwind_protection = []

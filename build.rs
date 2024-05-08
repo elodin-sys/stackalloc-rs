@@ -25,6 +25,7 @@ fn build_tramp()
 fn main() {
     // Assert we haven't travelled back in time
     assert!(version().unwrap().major >= 1);
+    println!("cargo::rustc-check-cfg=cfg(nightly)");
 
     // Set cfg flags depending on release channel
     match version_meta().unwrap().channel {
